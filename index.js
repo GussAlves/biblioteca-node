@@ -8,27 +8,31 @@ function trataErro(erro) {
 function extraiLinks(texto) {
     const regex = /\[([^\]]*)\]\((https?:\/\/[^#$\s].[^\s]*)\)/gm //https://regex101.com/
     const arrayResultados = []
-    let temp;
-    while((temp = regex.exec(texto)) !== null) {
-        arrayResultados.push({ [temp[1]]:temp[2] })
+    let temp
+    while ((temp = regex.exec(texto)) !== null) {
+        arrayResultados.push({ [temp[1]]: temp[2] })
     }
     return arrayResultados
 }
 
 //com async / await
 async function pegaArquivo(pathArquivo) {
-        const encoding = 'UTF-8'
-        try {
-            const texto = await fs.promises.readFile(pathArquivo, encoding)
-            console.log(extraiLinks(texto))
-        } catch (erro) {
-            trataErro(erro)
-        } finally {
-            console.log(chalk.blue('A operação foi finalizada!'))
-        }
+    const encoding = 'UTF-8'
+    try {
+        const texto = await fs.promises.readFile(pathArquivo, encoding)
+        console.log(extraiLinks(texto))
+    } catch (erro) {
+        trataErro(erro)
+    } finally {
+        console.log(chalk.blue('A operação foi finalizada!'))
     }
+}
 
-// com promisses 
+pegaArquivo('./arquivos/texto1.md')
+
+
+
+// com promisses
 /* function pegaArquivo(pathArquivo) {
     const encoding = 'UTF-8'
     fs
@@ -38,8 +42,8 @@ async function pegaArquivo(pathArquivo) {
         .catch(err => trataErro(err))
 } */
 
-// Sem promises 
-/* function pegaArquivoSemPromises(pathArquivo) {
+// Sem promises
+/* function pegaArquivo(pathArquivo) {
     const encoding = 'UTF-8'
     fs.readFile(pathArquivo, encoding, (err, texto) => {
         if (err) {
@@ -49,6 +53,3 @@ async function pegaArquivo(pathArquivo) {
         console.log(chalk.green(texto))
     })
 } */
-//pegaArquivoSemPromises('./arquivos/texto1.md')
-
-pegaArquivo('./arquivos/texto1.md')
