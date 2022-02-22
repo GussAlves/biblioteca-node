@@ -1,6 +1,4 @@
 # biblioteca-node
-Projeto realizando acompanhando curso NodeJS: Criando sua primeira biblioteca
-
 Repositório seguindo o curso 'NodeJS: Criando sua primeira biblioteca' da Alura por Juliana Amoasei.
 
 Criado para entender mais sobre o funcionamento do Node.js.
