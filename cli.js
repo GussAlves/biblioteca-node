@@ -1,7 +1,7 @@
 //command line interface / cli
 import chalk from "chalk";
-import pegaArquivo from "./index.js";
-import validaUrls from "./http-validacao.js";
+import pegaArquivo from "./src/index.js";
+import validaUrls from "./src/http-validacao.js";
 
 const codigo = process.argv
 
