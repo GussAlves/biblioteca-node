@@ -32,7 +32,7 @@ async function validaUrls(arrayLinks) {
     
     const resultados = arrayUrls.map( (objeto, index) => ({ 
         ...objeto,
-        status: statusLink[index]
+        status: statusLink[index]   
     }))
     return resultados
 }
