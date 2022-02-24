@@ -6,13 +6,19 @@ function manejaErros(erro) {
     throw new Error(erro.message)
 }
 
+// Com object.value é possível extrair valores dentro de um objeto
+// Extrai links dos objetos
+function extraiUrls(arrayLink) {
+    return arrayLink.map( link => Object.values(link).join());
+}
+
 async function checaStatus(arrayUrls) {
     try {
         const arrayStatus = await Promise
             .all(arrayUrls
                 .map( async url => {
                     const res = await fetch(url)
-                    return res.status
+                    return `${res.status} - ${res.statusText}`
                 }))
             return arrayStatus
     } catch (erro) {
@@ -20,13 +26,8 @@ async function checaStatus(arrayUrls) {
     }
 }
 
-// Com object.value é possível extrair valores dentro de um objeto
-function geraArrayUrls(arrayLink) {
-    return arrayLink.map( link => Object.values(link).join());
-}
-
-async function validaUrls(arrayUrls) {
-    const links = geraArrayUrls(arrayUrls)
+async function validaUrls(arrayLinks) {
+    const links = extraiUrls(arrayLinks)
     const statusLink = await checaStatus(links)
     
     const resultados = arrayUrls.map( (objeto, index) => ({ 
