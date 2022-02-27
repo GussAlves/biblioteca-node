@@ -30,7 +30,7 @@ async function validaUrls(arrayLinks) {
     const links = extraiUrls(arrayLinks)
     const statusLink = await checaStatus(links)
     
-    const resultados = arrayUrls.map( (objeto, index) => ({ 
+    const resultados = arrayLinks.map( (objeto, index) => ({ 
         ...objeto,
         status: statusLink[index]   
     }))
